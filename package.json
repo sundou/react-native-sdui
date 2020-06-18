@@ -1,0 +1,17 @@
+{
+  "name": "react-native-sdui",
+  "version": "1.0.5",
+  "description": "common ui components",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ui"
+  ],
+  "author": "sundou",
+  "license": "ISC",
+  "dependencies": {
+    "@ant-design/react-native": "^3.3.0"
+  }
+}
