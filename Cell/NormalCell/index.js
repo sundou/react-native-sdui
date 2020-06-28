@@ -12,8 +12,8 @@ export class NormalCell extends Component {
         source: null,
         image: null,
         extend: null,
-        tintColor: '#555555',
-        extendColor: '#2891F8',
+        tintColor: '#333333',
+        extendColor: '#999999',
         separatorColor: '#E5E5E5',
         marginTopBottom: 14,
 
