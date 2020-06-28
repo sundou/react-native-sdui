@@ -1,6 +1,6 @@
 {
   "name": "react-native-sdui",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "common ui components",
   "main": "index.ts",
   "scripts": {
