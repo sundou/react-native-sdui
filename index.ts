@@ -17,3 +17,6 @@ export { default as SDModal } from './Modal';
 // Input
 
 export { default as TextInputCard } from './Input/TextInputCard';
+
+// Button
+export { default as VerifyCodeBtn } from './Button/VerifyCodeBtn';

@@ -10,8 +10,9 @@ export default class SDModal extends Component {
 
 		this.state = {
 			visible: false,
-			title: '标题',
-			subtitle: '副标题'
+			title: undefined,
+			subtitle: undefined,
+			buttons: []
 		}
 	}
 
@@ -30,11 +31,12 @@ export default class SDModal extends Component {
 		})
 	}
 
-	alert = (title, subtitle) => {
+	alert = ({title, subtitle, buttons}) => {
 		// alert('alert');
 		this.setState({
 			title,
-			subtitle
+			subtitle,
+			buttons
 		}, () => {
 
 			this.showModal();
@@ -48,9 +50,11 @@ export default class SDModal extends Component {
 		const {
 			visible,
 			title,
-			subtitle
+			subtitle,
+			buttons
 		} = this.state;
 		const {
+			style,
 			type = 'blue',
 			onPress = () => { }
 		} = this.props;
@@ -70,14 +74,52 @@ export default class SDModal extends Component {
 						style={{
 							flex: 1,
 							justifyContent: 'center',
-							alignItems: 'center'
+							alignItems: 'center',
+							
 						}}
 						onPress={() => {
 							this.dismissModal()
 						}
 						}>
-							{this.props.children}
-
+							<View style={{
+								// flex:1,
+								overflow:'hidden',
+								width: '100%',
+								justifyContent: 'center',
+								alignItems: 'center',
+								...style
+							}}>
+							{this.props.children && this.props.children}
+							{!this.props.children && <>
+								{title && title}
+								{subtitle && subtitle}
+								{Array.isArray(buttons) && <View style={{
+									backgroundColor:'#D8D8D8',
+									flexDirection:'row'
+								}}>{
+									buttons.map(({onPress, text, style}) => {
+										return <TouchableOpacity 
+											activeOpacity={0.9}
+										style={{
+											flex:1, 
+											minHeight: 50,
+											backgroundColor:'white',
+											marginTop:0.5,
+											marginLeft: 0.5,
+											justifyContent:'center',
+											alignItems: 'center'
+										}}
+											onPress={() => {
+												this.dismissModal()
+												onPress && onPress()
+											}}
+										>
+											<Text style={{...style}}>{text}</Text>
+										</TouchableOpacity>
+									})
+								}</View>}
+							</>}
+							</View>
 					</TouchableOpacity>
 				</View>
 			</Modal>
